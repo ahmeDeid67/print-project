@@ -1,0 +1,11 @@
+@font-face {
+  font-family: Effra;
+  src: url(../font/effra.ttf) format("truetype");
+}
+
+:root {
+  --font-family: Effra, sans-serif;
+
+  /* --color-bg: #ccc; */
+  --primary-color: #5e0884;
+}

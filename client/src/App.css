@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+.gradient__bg {
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(221, 57, 147, 1) 0%,
+    rgba(95, 8, 133, 1) 69%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(221, 57, 147, 1) 0%,
+    rgba(95, 8, 133, 1) 69%
+  );
+  background: -o-linear-gradient(
+    90deg,
+    rgba(221, 57, 147, 1) 0%,
+    rgba(95, 8, 133, 1) 69%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5F0885', endColorstr='#DD3993', GradientType=0 );
+  background: -ms-linear-gradient(
+    90deg,
+    rgba(221, 57, 147, 1) 0%,
+    rgba(95, 8, 133, 1) 69%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(221, 57, 147, 1) 0%,
+    rgba(95, 8, 133, 1) 69%
+  );
+}
+
+.margin {
+  padding: 4rem 6rem;
+}
+
+.section__margin {
+  margin: 4rem 6rem;
+}
+
+@media screen and (max-width: 700px) {
+  .section__padding {
+    padding: 4rem;
+  }
+
+  .margin {
+    padding: 4rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .section__padding {
+    padding: 4rem 2rem;
+  }
+
+  .margin {
+    padding: 4rem 2rem;
+  }
+}
