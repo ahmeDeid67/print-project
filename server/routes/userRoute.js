@@ -7,12 +7,15 @@ const {
   getOneUser,
 } = require("../controllers/userController.js");
 
+const { login } = require("../controllers/loginController");
+
 // get requests
 router.get("/", getUsers);
 router.get("/:id", getOneUser);
 
 // post requests
-router.post("/", createUsers);
+router.post("/register", createUsers);
+router.post("/login", login);
 
 // put requests
 router.put("/:id", updateUser);

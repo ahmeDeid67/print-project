@@ -26,12 +26,12 @@ module.exports.getOneUser = async (req, res) => {
         .json({ status: "Fail", msg: "There is no user with this id" });
     }
     res.status(200).json({ status: "success", data: user });
-  } catch (e) {
+  } catch (err) {
     res.status(500).json({ status: "Fail", data: err.message });
   }
 };
 
-// Create new User
+// Create new User (Register)
 module.exports.createUsers = async (req, res) => {
   try {
     const {
@@ -39,6 +39,7 @@ module.exports.createUsers = async (req, res) => {
       familyName,
       email,
       password,
+      confirm_password,
       userCountry,
       phoneNumber,
       gender,
@@ -46,7 +47,13 @@ module.exports.createUsers = async (req, res) => {
     const checkEmail = await User.findOne({ email }); // Check if there is user with the same email
     const hashPassword = await bcrypt.hash(password, 10);
     if (checkEmail) {
-      res.status(300).json({ msg: "Email already used", status: false });
+      if (password == confirm_password) {
+        res.status(300).json({ msg: "Email already used", status: false });
+      } else {
+        res
+          .status(404)
+          .json({ msg: "Email and password are wrong", status: false });
+      }
     }
     const newUser = await User.create({
       firstName,

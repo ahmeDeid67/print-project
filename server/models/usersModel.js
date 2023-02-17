@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       minLength: 5,
     },
+    confirm_password: {
+      type: String,
+      minLength: 5,
+    },
     gender: {
       type: String,
     },
