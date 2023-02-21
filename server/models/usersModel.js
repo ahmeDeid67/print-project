@@ -38,6 +38,7 @@ const userSchema = new mongoose.Schema(
     gender: {
       type: String,
     },
+    token: { type: String },
   },
   {
     timestamps: true,

@@ -1,5 +1,6 @@
 const User = require("../models/usersModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // Get All Users
 module.exports.getUsers = async (req, res) => {
@@ -48,7 +49,7 @@ module.exports.createUsers = async (req, res) => {
     const hashPassword = await bcrypt.hash(password, 10);
     if (checkEmail) {
       if (password == confirm_password) {
-        res.status(300).json({ msg: "Email already used", status: false });
+        res.status(300).json({ msg: "User already exist", status: false });
       } else {
         res
           .status(404)
@@ -65,6 +66,12 @@ module.exports.createUsers = async (req, res) => {
       gender,
     });
 
+    const token = jwt.sign(
+      { user_id: newUser._id, email },
+      process.env.TOKEN_KEY,
+      { expiresIn: "30d" }
+    );
+    newUser.token = token;
     await newUser.save();
     delete newUser.password;
     res.status(200).json({ status: "success", data: newUser });
